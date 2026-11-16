@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="588" viewBox="0 0 1440 588" role="img" aria-labelledby="title desc">
+  <title id="title">RP-MIN architecture</title>
+  <desc id="desc">A single low-resolution image and its eight directional difference views pass through shared feature extraction, adaptive multivariate fusion, a deformable encoder–decoder, and offset-aware upsampling. The predicted residual is added to the bicubic input. LightGlue prepares paired references offline for supervision.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 8 4 0 8z" fill="#3e5870"/></marker>
+    <marker id="soft-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 8 4 0 8z" fill="#638091"/></marker>
+    <pattern id="pixel-grid" width="11" height="11" patternUnits="userSpaceOnUse"><path d="M 11 0 H 0 V 11" fill="none" stroke="#aac4d1" stroke-width="0.8"/></pattern>
+    <pattern id="subpixel-grid" width="5.5" height="5.5" patternUnits="userSpaceOnUse"><path d="M 5.5 0 H 0 V 5.5" fill="none" stroke="#a2c6c1" stroke-width="0.65"/></pattern>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; fill: #152b3e; }
+      .section { font-size: 22px; font-weight: 700; }
+      .subtitle { font-size: 13px; font-weight: 600; letter-spacing: .25px; fill: #425d73; }
+      .label { font-size: 17px; font-weight: 700; }
+      .small { font-size: 14px; fill: #39546b; }
+      .micro { font-size: 12px; fill: #425d73; }
+      .panel { stroke-width: 1.3; }
+      .node { fill: #fff; stroke-width: 1.1; }
+      .flow { fill: none; stroke: #3e5870; stroke-width: 2; marker-end: url(#arrow); }
+      .skip { fill: none; stroke: #638091; stroke-width: 1.6; stroke-dasharray: 5 4; marker-end: url(#soft-arrow); }
+    </style>
+  </defs>
+  <rect width="1440" height="588" fill="#fff"/>
+
+  <text x="36" y="52" font-size="33" font-weight="750">RP-MIN</text>
+  <text x="36" y="78" font-size="16" fill="#425d73">Displacement-derived features for bright-field microscopy super-resolution</text>
+  <path d="M36 97 H1404" stroke="#dee7ee"/>
+
+  <rect class="panel" x="36" y="203" width="122" height="136" rx="12" fill="#f5f9fc" stroke="#bfd1df"/>
+  <rect x="64" y="221" width="66" height="66" rx="3" fill="#e8f2f8" stroke="#9bb2c2"/>
+  <rect x="64" y="221" width="66" height="66" fill="url(#pixel-grid)"/>
+  <path d="M68 273 C89 275 78 241 98 236 C113 232 119 248 125 252" fill="none" stroke="#4f7792" stroke-width="3"/>
+  <text class="label" x="97" y="312" text-anchor="middle">LR image</text>
+  <text class="micro" x="97" y="328" text-anchor="middle">single input</text>
+  <path class="flow" d="M158 270 H180"/>
+
+  <rect class="panel" x="181" y="118" width="238" height="306" rx="14" fill="#eff6fb" stroke="#b8cedf"/>
+  <text class="section" x="198" y="150">Directional views</text>
+  <text class="subtitle" x="198" y="172">SUBPIXEL RESAMPLING</text>
+  <g fill="#dceaf3" stroke="#8faec2" stroke-width="1.2">
+    <rect x="218" y="203" width="69" height="55" rx="5"/>
+    <rect x="211" y="210" width="69" height="55" rx="5"/>
+    <rect x="204" y="217" width="69" height="55" rx="5"/>
+  </g>
+  <g fill="none" stroke="#547b94" stroke-width="1.2" marker-end="url(#soft-arrow)">
+    <path d="M320 235l0-26"/><path d="M320 235l21-21"/><path d="M320 235h29"/><path d="M320 235l21 21"/>
+    <path d="M320 235v29"/><path d="M320 235l-20 21"/><path d="M320 235h-28"/><path d="M320 235l-21-21"/>
+  </g>
+  <circle cx="320" cy="235" r="4" fill="#3c657e"/>
+  <text class="label" x="198" y="302">Shift(I, δᵢ) − I</text>
+  <text class="small" x="198" y="325">Original + eight differences</text>
+  <path class="flow" d="M299 336 V351"/>
+  <rect class="node" x="199" y="352" width="200" height="45" rx="8" stroke="#b8cedf"/>
+  <text class="label" x="299" y="380" text-anchor="middle">Shared feature stem</text>
+  <path class="flow" d="M399 374 H430 V210 H458"/>
+
+  <rect class="panel" x="442" y="118" width="260" height="306" rx="14" fill="#eef8f6" stroke="#a9ccc5"/>
+  <text class="section" x="459" y="150">AMFM</text>
+  <text class="subtitle" x="459" y="172">ADAPTIVE MULTIVARIATE FUSION</text>
+  <rect class="node" x="459" y="189" width="226" height="43" rx="8" stroke="#acc8c1"/>
+  <text class="small" x="572" y="216" text-anchor="middle">Deformable view embeddings</text>
+  <path class="flow" d="M572 232 V243 H512 V253"/>
+  <path class="flow" d="M572 243 H631 V253"/>
+  <rect x="459" y="254" width="107" height="76" rx="8" fill="#d9efe9" stroke="#a2c8bc"/>
+  <rect x="577" y="254" width="108" height="76" rx="8" fill="#e9edf9" stroke="#bdc7e1"/>
+  <text class="label" x="512" y="278" text-anchor="middle">SCE</text>
+  <text class="micro" x="512" y="298" text-anchor="middle">Cross-view</text>
+  <text class="micro" x="512" y="314" text-anchor="middle">correlation</text>
+  <text class="label" x="631" y="278" text-anchor="middle">SDA</text>
+  <text class="micro" x="631" y="298" text-anchor="middle">Absolute view</text>
+  <text class="micro" x="631" y="314" text-anchor="middle">differences</text>
+  <path class="flow" d="M512 330 V350"/><path class="flow" d="M631 330 V350"/>
+  <rect class="node" x="459" y="351" width="226" height="46" rx="8" stroke="#acc8c1"/>
+  <text class="small" x="572" y="379" text-anchor="middle">Reweight · concatenate · 1×1 conv</text>
+  <path class="flow" d="M685 374 H713 V212 H741"/>
+
+  <rect class="panel" x="725" y="118" width="254" height="306" rx="14" fill="#f4f4fb" stroke="#c4c6df"/>
+  <text class="section" x="742" y="150">Encoder–decoder</text>
+  <text class="subtitle" x="742" y="172">MULTISCALE DEFORMABLE FEATURES</text>
+  <path class="flow" d="M780 232 V253"/><path class="flow" d="M780 291 V320 H804"/>
+  <path class="flow" d="M900 320 H923 V291"/><path class="flow" d="M923 253 V232"/>
+  <path class="skip" d="M820 211 H883"/><path class="skip" d="M820 272 H883"/>
+  <rect class="node" x="742" y="192" width="78" height="40" rx="7" stroke="#c6c8df"/>
+  <rect class="node" x="884" y="192" width="78" height="40" rx="7" stroke="#c6c8df"/>
+  <rect class="node" x="742" y="253" width="78" height="39" rx="7" stroke="#c6c8df"/>
+  <rect class="node" x="884" y="253" width="78" height="39" rx="7" stroke="#c6c8df"/>
+  <rect x="805" y="301" width="95" height="39" rx="7" fill="#e6e7f5" stroke="#bfc2dd"/>
+  <text class="micro" x="781" y="216" text-anchor="middle">Encoder 1</text>
+  <text class="micro" x="923" y="216" text-anchor="middle">Decoder 1</text>
+  <text class="micro" x="781" y="277" text-anchor="middle">Encoder 2</text>
+  <text class="micro" x="923" y="277" text-anchor="middle">Decoder 2</text>
+  <text class="micro" x="852" y="325" text-anchor="middle">Bottleneck</text>
+  <path class="skip" d="M744 365 H769"/>
+  <text class="small" x="778" y="370">Same-resolution skips</text>
+  <text class="micro" x="742" y="394">Two down/up stages + feature residual</text>
+  <path class="flow" d="M962 212 H1018"/>
+
+  <rect class="panel" x="1002" y="118" width="237" height="306" rx="14" fill="#fff7ec" stroke="#dfc5a2"/>
+  <text class="section" x="1019" y="150">RPUM</text>
+  <text class="subtitle" x="1019" y="172">OFFSET-AWARE UPSAMPLING</text>
+  <rect class="node" x="1019" y="189" width="203" height="46" rx="8" stroke="#dbc5a8"/>
+  <text class="small" x="1120" y="217" text-anchor="middle">Predict dense LR offsets</text>
+  <path class="flow" d="M1120 236 V250"/>
+  <rect class="node" x="1019" y="251" width="203" height="46" rx="8" stroke="#dbc5a8"/>
+  <text class="small" x="1120" y="279" text-anchor="middle">Modulate by subpixel phase</text>
+  <path class="flow" d="M1120 297 V311"/>
+  <rect class="node" x="1019" y="312" width="203" height="46" rx="8" stroke="#dbc5a8"/>
+  <text class="small" x="1120" y="340" text-anchor="middle">Offset-aware grid sampling</text>
+  <path class="flow" d="M1120 358 V374"/>
+  <text class="label" x="1120" y="392" text-anchor="middle">RGB residual</text>
+  <path class="flow" d="M1180 386 H1247 V270 H1253"/>
+
+  <path class="flow" d="M97 339 V461 H1274 V290"/>
+  <rect x="592" y="446" width="232" height="31" rx="15" fill="#fff" stroke="#dbe5ec"/>
+  <text class="small" x="708" y="466" text-anchor="middle">Bicubic interpolation skip</text>
+  <circle cx="1274" cy="270" r="19" fill="#f5f8fb" stroke="#7390a7" stroke-width="1.6"/>
+  <path d="M1266 270h16m-8-8v16" fill="none" stroke="#375b75" stroke-width="2.3" stroke-linecap="round"/>
+  <path class="flow" d="M1293 270 H1308"/>
+  <rect class="panel" x="1309" y="203" width="95" height="136" rx="12" fill="#f1f8f7" stroke="#afd1cb"/>
+  <rect x="1329" y="223" width="55" height="55" rx="3" fill="#e2f3ef" stroke="#94bcb2"/>
+  <rect x="1329" y="223" width="55" height="55" fill="url(#subpixel-grid)"/>
+  <path d="M1333 265 C1346 267 1340 239 1356 234 C1369 230 1375 245 1380 248" fill="none" stroke="#4f837d" stroke-width="2.5"/>
+  <text class="label" x="1356" y="307" text-anchor="middle">SR image</text>
+  <text class="micro" x="1356" y="325" text-anchor="middle">×2 or ×4</text>
+
+  <rect x="36" y="504" width="1368" height="60" rx="10" fill="#f7f9fb" stroke="#bccbd7" stroke-dasharray="5 4"/>
+  <text class="subtitle" x="54" y="529">OFFLINE SUPERVISION</text>
+  <text class="micro" x="54" y="547">Training pairs</text>
+  <text class="small" x="263" y="539">Matched LR / HR fields</text>
+  <path class="flow" d="M423 534 H455"/>
+  <text class="small" x="469" y="529">SuperPoint + LightGlue</text>
+  <text class="micro" x="469" y="547">Optional ECC refinement</text>
+  <path class="flow" d="M650 534 H686"/>
+  <text class="small" x="700" y="539">HR reference on LR coordinates</text>
+  <path class="flow" d="M909 534 H958"/>
+  <text class="small" x="971" y="539">Charbonnier + frequency loss</text>
+  <path class="skip" d="M1356 339 V486 H1239 V533 H1179"/>
+</svg>
