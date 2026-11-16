@@ -59,6 +59,6 @@ python -m rpmin --device cuda infer \
   --out runs/example-x4.png --self-ensemble
 ```
 
-## Acknowledgments
+## License
 
-The implementation was developed from [FBANet](https://github.com/yjsunnn/FBANet). Its license notice is preserved in [LICENSE-FBANet](LICENSE-FBANet).
+RP-MIN is released under the [MIT License](LICENSE).
