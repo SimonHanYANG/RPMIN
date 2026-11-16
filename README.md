@@ -28,12 +28,12 @@ RP-MIN reconstructs a higher-resolution bright-field microscopy image from a sin
 
 ## Qualitative examples
 
-Each MFA-Cell row shows the same region in the low-resolution image, the RP-MIN reconstruction, and the registered high-resolution reference.
+Each row shows the same field of view. All images use the same display scale so their relative sizes reflect their pixel dimensions.
 
 | Scale | LR input region | RP-MIN reconstruction (SR) | Ground-truth HR (registered) |
 | :---: | :---: | :---: | :---: |
-| ×2 | <img src="assets/mfa-cell-x2-lr.png" alt="MFA-Cell ×2 LR input region" width="224"> | <img src="assets/mfa-cell-x2.png" alt="RP-MIN ×2 reconstruction on MFA-Cell" width="224"> | <img src="assets/mfa-cell-x2-hr.png" alt="MFA-Cell ×2 registered ground-truth HR" width="224"> |
-| ×4 | <img src="assets/mfa-cell-x4-lr.png" alt="MFA-Cell ×4 LR input region" width="224"> | <img src="assets/mfa-cell-x4.png" alt="RP-MIN ×4 reconstruction on MFA-Cell" width="224"> | <img src="assets/mfa-cell-x4-hr.png" alt="MFA-Cell ×4 registered ground-truth HR" width="224"> |
+| ×2 | <img src="assets/mfa-cell-x2-lr.png" alt="MFA-Cell ×2 LR input region" width="64"><br><sub>128 × 128 px</sub> | <img src="assets/mfa-cell-x2.png" alt="RP-MIN ×2 reconstruction on MFA-Cell" width="128"><br><sub>256 × 256 px</sub> | <img src="assets/mfa-cell-x2-hr.png" alt="MFA-Cell ×2 registered ground-truth HR" width="128"><br><sub>256 × 256 px</sub> |
+| ×4 | <img src="assets/mfa-cell-x4-lr.png" alt="MFA-Cell ×4 LR input region" width="64"><br><sub>128 × 128 px</sub> | <img src="assets/mfa-cell-x4.png" alt="RP-MIN ×4 reconstruction on MFA-Cell" width="256"><br><sub>512 × 512 px</sub> | <img src="assets/mfa-cell-x4-hr.png" alt="MFA-Cell ×4 registered ground-truth HR" width="256"><br><sub>512 × 512 px</sub> |
 
 ## Run the code
 
