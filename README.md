@@ -8,7 +8,7 @@ The manuscript has been submitted to [*Biomedical Signal Processing and Control*
 
 RP-MIN reconstructs a higher-resolution bright-field microscopy image from a single low-resolution input. It computes eight directional difference images by shifting the input by subpixel amounts and subtracting the original. The Adaptive Multivariate Fusion Module (AMFM) uses cross-view correlations and differences to fuse those features. A deformable encoder–decoder integrates spatial information at multiple scales, and the Refined Perception Upsampling Module (RPUM) uses learned sampling offsets to reconstruct fine details.
 
-![Updated Fig. 2 showing the RP-MIN architecture and offline pair preparation](assets/fig2-rpmin.svg)
+![Updated Fig. 2 showing the RP-MIN architecture and training-only registration](assets/fig2-rpmin.png)
 
 *Figure 2. Updated RP-MIN architecture. LightGlue is used in offline pair preparation. Inference takes a single LR image.*
 
