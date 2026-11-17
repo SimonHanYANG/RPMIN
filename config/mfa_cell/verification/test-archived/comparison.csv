@@ -1,3 +1,0 @@
-scale,context,psnr,ssim,within_archive_tolerance
-x2,patch,31.43036142778603,0.8764173518785667,True
-x4,whole,27.679713120249488,0.6871003616343826,True

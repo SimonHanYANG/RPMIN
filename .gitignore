@@ -9,5 +9,4 @@ SuperResolutionDataset/
 *.pt
 *.ckpt
 *.safetensors
-!/weights/mfa_cell/*.pt
-!/weights/mitos14_h07/**/*.pt
+/weights/

@@ -68,10 +68,12 @@ def run_suite(suite, manifest, out, model, training, device, workers, seeds, res
 
 
 @torch.inference_mode()
-def compare_images(manifest, split, methods, out, border, device, lr_patch=None, stride_x=32, stride_y=25, origin=1):
+def compare_images(manifest, split, methods, out, border, device, lr_patch=None, stride_x=None, stride_y=None, origin=0):
     pairs = [pair for pair in read_manifest(manifest) if pair.split == split]
     if not pairs or not methods:
         raise ValueError("At least one sample and method are required.")
+    stride_x = lr_patch if stride_x is None else stride_x
+    stride_y = lr_patch if stride_y is None else stride_y
     rows_by_method = {method: [] for method in methods}
     for pair in pairs:
         hr = load_rgb(pair.hr)[None].to(device)

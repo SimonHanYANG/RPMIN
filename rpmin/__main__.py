@@ -55,6 +55,13 @@ def add_scoring_options(parser):
     parser.add_argument("--border", type=int, default=0, help="HR pixels removed on each side for metrics.")
 
 
+def add_patch_grid_options(parser, patch_help):
+    parser.add_argument("--lr-patch", type=int, help=patch_help)
+    parser.add_argument("--stride-x", type=int, help="Horizontal LR step. Defaults to the patch size.")
+    parser.add_argument("--stride-y", type=int, help="Vertical LR step. Defaults to the patch size.")
+    parser.add_argument("--origin", type=int, default=0, help="LR grid origin in both axes.")
+
+
 def method_paths(entries):
     methods = {}
     for entry in entries:
@@ -103,10 +110,7 @@ def parse_args(argv):
     evaluation.add_argument("--attention", action="store_true")
     evaluation.add_argument("--self-ensemble", action="store_true", help="Average eight flip/transpose predictions.")
     evaluation.add_argument("--calibration", type=Path, help="Optional training-fitted camera calibration JSON.")
-    evaluation.add_argument("--lr-patch", type=int, help="Run inference on individual LR grid patches.")
-    evaluation.add_argument("--stride-x", type=int, default=32)
-    evaluation.add_argument("--stride-y", type=int, default=25)
-    evaluation.add_argument("--origin", type=int, default=1, help="LR grid origin in both axes.")
+    add_patch_grid_options(evaluation, "Run inference on individual LR grid patches.")
     evaluation.add_argument("--hr-origin", type=int, help="HR grid origin, default is LR origin multiplied by scale.")
     evaluation.add_argument("--batch", type=int, default=1, help="Inference batch size for fixed-size patches.")
 
@@ -164,10 +168,7 @@ def parse_args(argv):
     scores = commands.add_parser("score-images", help="Score all methods from saved PNGs using the same protocol.")
     add_scoring_options(scores)
     scores.add_argument("--method", action="append", required=True, metavar="NAME=FOLDER")
-    scores.add_argument("--lr-patch", type=int, help="Score grid patches cut from the saved full-field predictions.")
-    scores.add_argument("--stride-x", type=int, default=32)
-    scores.add_argument("--stride-y", type=int, default=25)
-    scores.add_argument("--origin", type=int, default=1)
+    add_patch_grid_options(scores, "Score grid patches cut from the saved full-field predictions.")
 
     segmentation = commands.add_parser("segment-score", help="Score precomputed Hover-Net instance maps.")
     add_manifest_options(segmentation)
@@ -212,7 +213,9 @@ def run(args):
         if args.hr_origin is not None and args.lr_patch is None:
             raise ValueError("--hr-origin requires --lr-patch.")
         grid = None if args.lr_patch is None else {
-            "patch": args.lr_patch, "stride_x": args.stride_x, "stride_y": args.stride_y,
+            "patch": args.lr_patch,
+            "stride_x": args.lr_patch if args.stride_x is None else args.stride_x,
+            "stride_y": args.lr_patch if args.stride_y is None else args.stride_y,
             "origin": args.origin, "hr_origin": args.hr_origin,
         }
         return evaluate_manifest(
