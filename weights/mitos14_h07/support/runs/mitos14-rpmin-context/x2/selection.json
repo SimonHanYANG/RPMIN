@@ -1,0 +1,108 @@
+{
+  "selected": {
+    "radius": 16,
+    "mode": "d4",
+    "strength": 0.0,
+    "pairs": 132,
+    "psnr": 28.689264861020174,
+    "ssim": 0.8784426667473533
+  },
+  "baseline": {
+    "radius": 0,
+    "mode": "single",
+    "strength": 0.0,
+    "pairs": 132,
+    "psnr": 28.646005168105617,
+    "ssim": 0.8778986303192197
+  },
+  "candidates": [
+    {
+      "radius": 0,
+      "mode": "single",
+      "strength": 0.0,
+      "pairs": 132,
+      "psnr": 28.646005168105617,
+      "ssim": 0.8778986303192197
+    },
+    {
+      "radius": 16,
+      "mode": "single",
+      "strength": 0.0,
+      "pairs": 132,
+      "psnr": 28.669519727880303,
+      "ssim": 0.8779159644336412
+    },
+    {
+      "radius": 32,
+      "mode": "single",
+      "strength": 0.0,
+      "pairs": 132,
+      "psnr": 28.66951981457797,
+      "ssim": 0.8779159716584466
+    },
+    {
+      "radius": 16,
+      "mode": "phase",
+      "strength": 0.0,
+      "pairs": 132,
+      "psnr": 28.669847531752154,
+      "ssim": 0.8779234764250842
+    },
+    {
+      "radius": 16,
+      "mode": "d4",
+      "strength": 0.0,
+      "pairs": 132,
+      "psnr": 28.689264861020174,
+      "ssim": 0.8784426667473533
+    },
+    {
+      "radius": 16,
+      "mode": "d4",
+      "strength": 0.25,
+      "pairs": 132,
+      "psnr": 28.689131433313545,
+      "ssim": 0.8783838080637383
+    },
+    {
+      "radius": 16,
+      "mode": "d4",
+      "strength": 0.5,
+      "pairs": 132,
+      "psnr": 28.688704534010455,
+      "ssim": 0.8783182844971166
+    },
+    {
+      "radius": 16,
+      "mode": "d4",
+      "strength": 0.75,
+      "pairs": 132,
+      "psnr": 28.6879844232039,
+      "ssim": 0.8782462847955299
+    },
+    {
+      "radius": 16,
+      "mode": "d4",
+      "strength": 1.0,
+      "pairs": 132,
+      "psnr": 28.686970580707897,
+      "ssim": 0.8781676342089971
+    }
+  ],
+  "sources": {
+    "2": {
+      "prior": "3e0a452f690596676ee0b3e1abb3ac9ec224661385e7a3ad55619079cbbb45b6",
+      "cross": "037863f25abd5a9afb40d2ef2f4827f22c06d9112c3a2510e6c62050db256a00",
+      "luma": "c9efb1729463773d3049f3f7fdf714d7381148952e23563d57a0ab22a1e0c9a6",
+      "train": "ffc92e1691e0608e6e7d243a3a4e6ebedabed5bff802ff4fcc4dbfa38e39fb74"
+    },
+    "4": {
+      "prior": "ce7a15395929436f0fa9efd68ee16faed007f8749a5bbf0d57bdf98db437a807",
+      "cross": "398526d75855fd5de6a483070df8f97ac782b150cc057b94031c1bfd3bd382d2",
+      "luma": "4a994419f2befe2d768faec3b1a1249bf9f8c9881b6f09257d51d8e2aeece033",
+      "train": "ffc92e1691e0608e6e7d243a3a4e6ebedabed5bff802ff4fcc4dbfa38e39fb74",
+      "tuned": "ce929277748f7ae27782cf089534ab4dc744624e6d8afcaa4479f6a46bd2dffc"
+    }
+  },
+  "residual_sha256": "7942c1fb09f346885a02f1699c88d7d4a8985f6fefa2722c7906f9f124edeb8a"
+}

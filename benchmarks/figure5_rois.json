@@ -1,0 +1,110 @@
+[
+  {
+    "row": 1,
+    "dataset": "MFA-Cell",
+    "raw_file": "1_x40.png",
+    "overview": [
+      93,
+      687,
+      505,
+      505
+    ],
+    "raw_roi": [
+      358,
+      996,
+      128,
+      127
+    ],
+    "gt_match_ncc": 0.9940392374992371
+  },
+  {
+    "row": 2,
+    "dataset": "MFA-Cell",
+    "raw_file": "1_x40.png",
+    "overview": [
+      1233,
+      7,
+      505,
+      505
+    ],
+    "raw_roi": [
+      1373,
+      146,
+      128,
+      127
+    ],
+    "gt_match_ncc": 0.9924643635749817
+  },
+  {
+    "row": 3,
+    "dataset": "MFA-Cell",
+    "raw_file": "16_x40.png",
+    "overview": [
+      1324,
+      535,
+      505,
+      505
+    ],
+    "raw_roi": [
+      1702,
+      861,
+      128,
+      127
+    ],
+    "gt_match_ncc": 0.983643651008606
+  },
+  {
+    "row": 4,
+    "dataset": "Mitos-Atypia-14",
+    "raw_file": "H10_02.png",
+    "overview": [
+      5637,
+      2703,
+      505,
+      505
+    ],
+    "raw_roi": [
+      5872,
+      3075,
+      128,
+      127
+    ],
+    "gt_match_ncc": 0.9954777956008911
+  },
+  {
+    "row": 5,
+    "dataset": "Mitos-Atypia-14",
+    "raw_file": "H10_00.png",
+    "overview": [
+      4,
+      3103,
+      505,
+      505
+    ],
+    "raw_roi": [
+      104,
+      3328,
+      128,
+      127
+    ],
+    "gt_match_ncc": 0.970551073551178
+  },
+  {
+    "row": 6,
+    "dataset": "Mitos-Atypia-14",
+    "raw_file": "H10_00.png",
+    "overview": [
+      132,
+      4103,
+      505,
+      505
+    ],
+    "raw_roi": [
+      313,
+      4295,
+      128,
+      127
+    ],
+    "gt_match_ncc": 0.947104811668396
+  }
+]

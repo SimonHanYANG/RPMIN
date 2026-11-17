@@ -1,0 +1,274 @@
+{
+  "selected": {
+    "blend": 0.5,
+    "update": 0.6,
+    "band": "smooth",
+    "pairs": 132,
+    "psnr": 28.702581737980697,
+    "ssim": 0.8792016144954797
+  },
+  "candidates": [
+    {
+      "blend": 0.0,
+      "update": 0.0,
+      "band": "none",
+      "pairs": 132,
+      "psnr": 28.689264861020174,
+      "ssim": 0.8784426667473533
+    },
+    {
+      "blend": 0.0,
+      "update": 0.15,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.674398985776033,
+      "ssim": 0.8783559623089704
+    },
+    {
+      "blend": 0.0,
+      "update": 0.15,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.69184637069702,
+      "ssim": 0.8784000679399028
+    },
+    {
+      "blend": 0.0,
+      "update": 0.15,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.670955990300033,
+      "ssim": 0.8783648799766194
+    },
+    {
+      "blend": 0.0,
+      "update": 0.35,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.630093762368865,
+      "ssim": 0.8772850939721772
+    },
+    {
+      "blend": 0.0,
+      "update": 0.35,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.69398861220389,
+      "ssim": 0.8783101204669836
+    },
+    {
+      "blend": 0.0,
+      "update": 0.35,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.620747537323922,
+      "ssim": 0.8772385201670907
+    },
+    {
+      "blend": 0.0,
+      "update": 0.6,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.53663262453946,
+      "ssim": 0.8745264469674139
+    },
+    {
+      "blend": 0.0,
+      "update": 0.6,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.694574298280656,
+      "ssim": 0.8781443238258362
+    },
+    {
+      "blend": 0.0,
+      "update": 0.6,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.518044847430605,
+      "ssim": 0.8743181851777163
+    },
+    {
+      "blend": 0.25,
+      "update": 0.0,
+      "band": "none",
+      "pairs": 132,
+      "psnr": 28.69523354732629,
+      "ssim": 0.8791471570730209
+    },
+    {
+      "blend": 0.25,
+      "update": 0.15,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.680139527176365,
+      "ssim": 0.8789838290575779
+    },
+    {
+      "blend": 0.25,
+      "update": 0.15,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.698159925865404,
+      "ssim": 0.8790799568999897
+    },
+    {
+      "blend": 0.25,
+      "update": 0.15,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.676328254468512,
+      "ssim": 0.8790172239144644
+    },
+    {
+      "blend": 0.25,
+      "update": 0.35,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.635834058125813,
+      "ssim": 0.8778126962257154
+    },
+    {
+      "blend": 0.25,
+      "update": 0.35,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.700799161737617,
+      "ssim": 0.8789572033918265
+    },
+    {
+      "blend": 0.25,
+      "update": 0.35,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.625523624998152,
+      "ssim": 0.8778233234629487
+    },
+    {
+      "blend": 0.25,
+      "update": 0.6,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.542847113175824,
+      "ssim": 0.8749329714160977
+    },
+    {
+      "blend": 0.25,
+      "update": 0.6,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.702064976547703,
+      "ssim": 0.8787505369294774
+    },
+    {
+      "blend": 0.25,
+      "update": 0.6,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.52240126060717,
+      "ssim": 0.874823229782509
+    },
+    {
+      "blend": 0.5,
+      "update": 0.0,
+      "band": "none",
+      "pairs": 132,
+      "psnr": 28.691726366678875,
+      "ssim": 0.8796735049197169
+    },
+    {
+      "blend": 0.5,
+      "update": 0.15,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.678250124960236,
+      "ssim": 0.8794642935196558
+    },
+    {
+      "blend": 0.5,
+      "update": 0.15,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.695753675518613,
+      "ssim": 0.8795887200218259
+    },
+    {
+      "blend": 0.5,
+      "update": 0.15,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.673353440833814,
+      "ssim": 0.8795155318397464
+    },
+    {
+      "blend": 0.5,
+      "update": 0.35,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.63598767193881,
+      "ssim": 0.8782266879623587
+    },
+    {
+      "blend": 0.5,
+      "update": 0.35,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.699763052391283,
+      "ssim": 0.8794412956093297
+    },
+    {
+      "blend": 0.5,
+      "update": 0.35,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.62330065351544,
+      "ssim": 0.8782815743576396
+    },
+    {
+      "blend": 0.5,
+      "update": 0.6,
+      "band": "full",
+      "pairs": 132,
+      "psnr": 28.545324715701017,
+      "ssim": 0.8752564476294951
+    },
+    {
+      "blend": 0.5,
+      "update": 0.6,
+      "band": "smooth",
+      "pairs": 132,
+      "psnr": 28.702581737980697,
+      "ssim": 0.8792016144954797
+    },
+    {
+      "blend": 0.5,
+      "update": 0.6,
+      "band": "detail",
+      "pairs": 132,
+      "psnr": 28.52116214867794,
+      "ssim": 0.8752286890239427
+    }
+  ],
+  "baseline": {
+    "blend": 0.0,
+    "update": 0.0,
+    "band": "none",
+    "pairs": 132,
+    "psnr": 28.689264861020174,
+    "ssim": 0.8784426667473533
+  },
+  "sources": {
+    "2": {
+      "prior": "86cf4e3f2a1a88f1c6bef82c66317a1137a1377a7d0579104f8133940efb891d",
+      "camera": "7fb7430df8a4a8e4f7482b46433de6630e80254e9d69e69c95cc6cbf7e28b09f",
+      "training": "6cefaf56d33e067bf25c8343458b99c6012a6a1c58a581caf30f752286f7abb2",
+      "model": "f569e3ed58947834ee192b39466d418b80ea22cef3a54c3493759e8b594e6cbc"
+    },
+    "4": {
+      "prior": "76d375347a80f8227875613b0d1a6054ced0bc1ee2c4d8fd3538c0fd235f1b4a",
+      "camera": "a4255b81238a21f1969b2b74d4c546f5e6e554171be9fb49c6abe6db51fb56da",
+      "training": "8905825bdceb896ff12694eb6810e4782616fbeb510d0007df745b263ffe2b66",
+      "model": "8e2a6214b44e4128148d00b60ca00891fac92179f8142b70c3a7c5b076f89922"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 __pycache__/
 .venv/
 *.pyc
-runs/
+/runs/
 outputs/
 checkpoints/
 SuperResolutionDataset/
@@ -9,3 +9,5 @@ SuperResolutionDataset/
 *.pt
 *.ckpt
 *.safetensors
+!/weights/mfa_cell/*.pt
+!/weights/mitos14_h07/**/*.pt

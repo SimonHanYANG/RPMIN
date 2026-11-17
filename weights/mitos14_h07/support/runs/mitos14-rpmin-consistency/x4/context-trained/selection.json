@@ -1,0 +1,21 @@
+{
+  "best": {
+    "step": 400,
+    "pairs": 132,
+    "psnr": 28.09673482721502,
+    "ssim": 0.7843122288133159
+  },
+  "initial": {
+    "pairs": 132,
+    "psnr": 28.08740219925389,
+    "ssim": 0.7843087374260931
+  },
+  "mixed_steps": 0,
+  "real_steps": 2000,
+  "train_sha256": "ffc92e1691e0608e6e7d243a3a4e6ebedabed5bff802ff4fcc4dbfa38e39fb74",
+  "init_sha256": "84c58d22a43ea1cc172d802ebce5307a5781ad66db7c9ae5ddf428de7750c418",
+  "metric": "BT.601 Y",
+  "native_grid": true,
+  "context": 16,
+  "checkpoint_sha256": "8e2a6214b44e4128148d00b60ca00891fac92179f8142b70c3a7c5b076f89922"
+}

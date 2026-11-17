@@ -1,0 +1,5 @@
+id,split,group,lr,hr
+h10-01-7bb452ab1a,train,h10-01-7bb452ab1a,lr/h10-01-7bb452ab1a.png,hr/h10-01-7bb452ab1a.png
+h10-02-27211e298e,train,h10-02-27211e298e,lr/h10-02-27211e298e.png,hr/h10-02-27211e298e.png
+h10-03-8751d3a5d6,train,h10-03-8751d3a5d6,lr/h10-03-8751d3a5d6.png,hr/h10-03-8751d3a5d6.png
+h10-04-e460c26105,val,h10-04-e460c26105,lr/h10-04-e460c26105.png,hr/h10-04-e460c26105.png

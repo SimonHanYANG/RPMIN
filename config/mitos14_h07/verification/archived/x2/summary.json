@@ -1,0 +1,28 @@
+{
+  "scale": 2,
+  "split": "test",
+  "metric": "BT.601 Y",
+  "border_hr": 0,
+  "manifest_sha256": "b657db7bbec781696bc002a4a59c88c5d43137e75d35d953a35a3cbdd26bcdbd",
+  "selected": {
+    "weights": [
+      0.0,
+      0.0,
+      0.25
+    ],
+    "pairs": 132,
+    "psnr": 28.7047438621521,
+    "ssim": 0.8796078901399266
+  },
+  "patch_input": {
+    "patch": 128,
+    "stride_x": 128,
+    "stride_y": 128,
+    "origin": 1,
+    "batch": 4,
+    "fields": 1
+  },
+  "pairs": 132,
+  "psnr": 28.27777273004705,
+  "ssim": 0.887403326052608
+}

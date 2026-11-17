@@ -1,0 +1,86 @@
+{
+  "dataset": {
+    "collection": "ciliated epithelial cell for super resolution",
+    "split": "split.csv",
+    "source_hashes": "source_sha256.json",
+    "groups": {"train": 34, "val": 4, "test": 4}
+  },
+  "registration": {
+    "method": "Recorded SuperPoint + LightGlue with affine ECC refinement",
+    "margin_lr": 12,
+    "reference_pixels_sha256": {
+      "x2": {
+        "train-val": "ec91e93745d2690327bff11c117b948abbbb449507cf327b6328c7f73a018b09",
+        "test": "5449b3be2d0b21ebbc34de9c4e3ad5171214d16a5bfce26eec905b57217e03b1"
+      },
+      "x4": {
+        "train-val": "8c7a90958d0d5c56d998a3718063e40a076b3531e7db826546adf2ca7473c12b",
+        "test": "7e6e6c406fca7a55dfd5218d34a3639f6bdaa21edbab5282cea2b9ed9a256b76"
+      }
+    }
+  },
+  "environment": {"python": "3.12", "torch": "2.8.0+cu128", "torchvision": "0.23.0+cu128", "opencv": "4.13.0", "gpu": "GeForce RTX 5090", "threads": 4, "workers": 0},
+  "archive": "weights/mfa_cell",
+  "model_defaults": {"directions": 8, "view_mode": "difference", "amfm": true, "rpum": true, "deformable": true, "radius": null, "detail_head": false},
+  "train_defaults": {
+    "epochs": 200,
+    "batch": 4,
+    "patch": 128,
+    "lr": 0.0001,
+    "min_lr": 0.000005,
+    "warmup": 5,
+    "weight_decay": 0.01,
+    "pixel_weight": 0.9,
+    "frequency_weight": 0.1,
+    "phase": "energy-weighted",
+    "seed": 42,
+    "val_seed": 101,
+    "border": 0,
+    "validate_every": 4,
+    "patches_per_field": 16,
+    "cache_train": true,
+    "mse_weight": 0.5,
+    "ssim_weight": 0.1,
+    "val_patch_stride": 64
+  },
+  "models": {
+    "x2-w32": {
+      "model": {"scale": 2, "width": 32},
+      "train": {},
+      "best_epoch": 148,
+      "file": "RP-MIN_MFA-Cell_x2_W32_RGB-PSNR31.4304_SSIM0.8764.pt",
+      "sha256": "b5ea94f105b5a50963027933c3984c8d4836568158f72eda916dfc35d11733ae",
+      "original": "runs/full/models/x2/base/best.pt"
+    },
+    "x4-w32": {
+      "model": {"scale": 4, "width": 32},
+      "train": {},
+      "best_epoch": 144,
+      "file": "RP-MIN_MFA-Cell_x4_ensemble_W32.pt",
+      "sha256": "71d4d5e1263446b2c614ef7e047c5a3a1de328324a4827f5c3793dacd69a554b",
+      "original": "runs/full/models/x4/base/best.pt"
+    },
+    "x4-w48": {
+      "model": {"scale": 4, "width": 48},
+      "train": {"epochs": 120, "warmup": 4, "seed": 87},
+      "best_epoch": 80,
+      "file": "RP-MIN_MFA-Cell_x4_ensemble_W48.pt",
+      "sha256": "409d85d787d43db997df272f0e5e670d4077e5d0fcb5ddd2a725fe4274371971",
+      "original": "runs/x4-polish/width48/best.pt"
+    }
+  },
+  "test": {
+    "metric": "RGB [0,1] PSNR and 11x11 Gaussian SSIM",
+    "peak": 1.0,
+    "border_hr": 0,
+    "grid": {"patch": 128, "stride_x": 32, "stride_y": 25, "origin": 1},
+    "seeds": [101, 102, 103],
+    "self_ensemble": "d4",
+    "patches_per_seed": 308,
+    "tolerance": {"psnr": 0.0001, "ssim": 0.00001},
+    "scales": {
+      "x2": {"models": ["x2-w32"], "context": "patch", "batch": 4, "psnr": 31.43036142778603, "ssim": 0.8764173518785667},
+      "x4": {"models": ["x4-w32", "x4-w48"], "context": "whole", "batch": 1, "psnr": 27.679713120249488, "ssim": 0.6871003616343826, "fusion": "equal RGB prediction average"}
+    }
+  }
+}

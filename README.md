@@ -35,6 +35,19 @@ Each row shows the same field of view. All images use the same display scale so 
 | ×2 | <img src="assets/mfa-cell-x2-lr.png" alt="MFA-Cell ×2 LR input region" width="64"><br><sub>128 × 128 px</sub> | <img src="assets/mfa-cell-x2.png" alt="RP-MIN ×2 reconstruction on MFA-Cell" width="128"><br><sub>256 × 256 px</sub> | <img src="assets/mfa-cell-x2-hr.png" alt="MFA-Cell ×2 registered ground-truth HR" width="128"><br><sub>256 × 256 px</sub> |
 | ×4 | <img src="assets/mfa-cell-x4-lr.png" alt="MFA-Cell ×4 LR input region" width="64"><br><sub>128 × 128 px</sub> | <img src="assets/mfa-cell-x4.png" alt="RP-MIN ×4 reconstruction on MFA-Cell" width="256"><br><sub>512 × 512 px</sub> | <img src="assets/mfa-cell-x4-hr.png" alt="MFA-Cell ×4 registered ground-truth HR" width="256"><br><sub>512 × 512 px</sub> |
 
+## Reproduction results
+
+Archived RP-MIN checkpoints were re-evaluated at both magnifications on paired, registered fields. Each entry gives PSNR (dB) / SSIM.
+
+| Dataset and scoring protocol | ×2 | ×4 |
+| --- | ---: | ---: |
+| [MFA-Cell, RGB](config/mfa_cell/) | 31.4304 / 0.8764 | 27.6797 / 0.6871 |
+| [MITOS-ATYPIA-14 H10 + H07, BT.601 Y](config/mitos14_h07/) | 28.2778 / 0.8874 | 27.2878 / 0.7883 |
+
+MFA-Cell uses four held-out fields and 308 windows per inference seed. MITOS-ATYPIA-14 uses 132 windows from the held-out `H10_00` field and shares slide H10 with training and validation. The MITOS-ATYPIA-14 reproduction depends on the original registered-reference workspace and saved experiment artifacts.
+
+The two configurations include checkpoint inventories, per-window scores, and reproduction commands. The additional RGB comparisons for AESOP, SeD, and NeXtSRGAN, including training and inference protocols, are in [benchmarks](benchmarks/).
+
 ## Run the code
 
 Use Python 3.12 and a PyTorch build for your device. From the repository root, install the dependencies for training, inference, and optional LightGlue registration.

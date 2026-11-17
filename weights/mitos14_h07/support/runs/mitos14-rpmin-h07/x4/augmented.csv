@@ -1,0 +1,7 @@
+id,split,group,lr,hr
+h10-01-7bb452ab1a,train,h10-01-7bb452ab1a,../../mitos14-h10-train/x4/references/train-val/lr/h10-01-7bb452ab1a.png,../../mitos14-h10-train/x4/references/train-val/hr/h10-01-7bb452ab1a.png
+h10-02-27211e298e,train,h10-02-27211e298e,../../mitos14-h10-train/x4/references/train-val/lr/h10-02-27211e298e.png,../../mitos14-h10-train/x4/references/train-val/hr/h10-02-27211e298e.png
+h10-03-8751d3a5d6,train,h10-03-8751d3a5d6,../../mitos14-h10-train/x4/references/train-val/lr/h10-03-8751d3a5d6.png,../../mitos14-h10-train/x4/references/train-val/hr/h10-03-8751d3a5d6.png
+h10-04-e460c26105,val,h10-04-e460c26105,../../mitos14-h10-train/x4/references/train-val/lr/h10-04-e460c26105.png,../../mitos14-h10-train/x4/references/train-val/hr/h10-04-e460c26105.png
+h07_00,train,h07,h07-references/lr/h07_00.png,h07-references/hr/h07_00.png
+h07_01,train,h07,h07-references/lr/h07_01.png,h07-references/hr/h07_01.png

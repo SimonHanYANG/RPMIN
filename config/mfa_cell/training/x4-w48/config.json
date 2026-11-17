@@ -1,0 +1,52 @@
+{
+  "model_config": {
+    "scale": 4,
+    "width": 48,
+    "directions": 8,
+    "view_mode": "difference",
+    "amfm": true,
+    "rpum": true,
+    "deformable": true,
+    "radius": null,
+    "detail_head": false
+  },
+  "train_config": {
+    "epochs": 120,
+    "batch": 4,
+    "patch": 128,
+    "lr": 0.0001,
+    "min_lr": 5e-06,
+    "warmup": 4,
+    "weight_decay": 0.01,
+    "pixel_weight": 0.9,
+    "frequency_weight": 0.1,
+    "phase": "energy-weighted",
+    "seed": 87,
+    "val_seed": 101,
+    "border": 0,
+    "validate_every": 4,
+    "patches_per_field": 16,
+    "cache_train": true,
+    "mse_weight": 0.5,
+    "ssim_weight": 0.1,
+    "val_patch_stride": 64
+  },
+  "manifest_sha256": "acff7fa065328d48253ae52901c84e74d529497755890bd3d53a2fa4f6f0054e",
+  "split_counts": {
+    "train": {
+      "pairs": 34,
+      "groups": 34,
+      "missing_group": 0
+    },
+    "val": {
+      "pairs": 4,
+      "groups": 4,
+      "missing_group": 0
+    },
+    "test": {
+      "pairs": 0,
+      "groups": 0,
+      "missing_group": 0
+    }
+  }
+}

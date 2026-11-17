@@ -1,0 +1,207 @@
+{
+  "selected": {
+    "variant": "ensemble",
+    "checkpoints": [
+      "detail",
+      "width48"
+    ],
+    "pad": 0,
+    "d4": false,
+    "strength": 1.0,
+    "pairs": 132,
+    "psnr": 26.12422054464167,
+    "ssim": 0.7258771576664664
+  },
+  "candidates": [
+    {
+      "variant": "base",
+      "checkpoints": [
+        "base"
+      ],
+      "pad": 0,
+      "d4": false,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.703546206156414,
+      "ssim": 0.7101101988192761
+    },
+    {
+      "variant": "base",
+      "checkpoints": [
+        "base"
+      ],
+      "pad": 16,
+      "d4": false,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.676956740292635,
+      "ssim": 0.7101706212217157
+    },
+    {
+      "variant": "base",
+      "checkpoints": [
+        "base"
+      ],
+      "pad": 16,
+      "d4": true,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.751365199233547,
+      "ssim": 0.7129064179731138
+    },
+    {
+      "variant": "detail",
+      "checkpoints": [
+        "detail"
+      ],
+      "pad": 0,
+      "d4": false,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.945063865546025,
+      "ssim": 0.7273286870031646
+    },
+    {
+      "variant": "detail",
+      "checkpoints": [
+        "detail"
+      ],
+      "pad": 16,
+      "d4": false,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.905900131572377,
+      "ssim": 0.7272357719414162
+    },
+    {
+      "variant": "detail",
+      "checkpoints": [
+        "detail"
+      ],
+      "pad": 16,
+      "d4": true,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.977008964076187,
+      "ssim": 0.7300055501135913
+    },
+    {
+      "variant": "width48",
+      "checkpoints": [
+        "width48"
+      ],
+      "pad": 0,
+      "d4": false,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.981828342784535,
+      "ssim": 0.7292854216965762
+    },
+    {
+      "variant": "width48",
+      "checkpoints": [
+        "width48"
+      ],
+      "pad": 16,
+      "d4": false,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.94173136624423,
+      "ssim": 0.7291966753475594
+    },
+    {
+      "variant": "width48",
+      "checkpoints": [
+        "width48"
+      ],
+      "pad": 16,
+      "d4": true,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.99662007707538,
+      "ssim": 0.7312844278234424
+    },
+    {
+      "variant": "ensemble",
+      "checkpoints": [
+        "detail",
+        "width48"
+      ],
+      "pad": 0,
+      "d4": false,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 26.003272099928424,
+      "ssim": 0.7298153661417238
+    },
+    {
+      "variant": "ensemble",
+      "checkpoints": [
+        "detail",
+        "width48"
+      ],
+      "pad": 16,
+      "d4": false,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.962692535284795,
+      "ssim": 0.7297117990074735
+    },
+    {
+      "variant": "ensemble",
+      "checkpoints": [
+        "detail",
+        "width48"
+      ],
+      "pad": 16,
+      "d4": true,
+      "strength": 0,
+      "pairs": 132,
+      "psnr": 25.995368379535098,
+      "ssim": 0.7309574760270842
+    },
+    {
+      "variant": "ensemble",
+      "checkpoints": [
+        "detail",
+        "width48"
+      ],
+      "pad": 0,
+      "d4": false,
+      "strength": 0.5,
+      "pairs": 132,
+      "psnr": 26.104196548461914,
+      "ssim": 0.7289721441991401
+    },
+    {
+      "variant": "ensemble",
+      "checkpoints": [
+        "detail",
+        "width48"
+      ],
+      "pad": 0,
+      "d4": false,
+      "strength": 1.0,
+      "pairs": 132,
+      "psnr": 26.12422054464167,
+      "ssim": 0.7258771576664664
+    }
+  ],
+  "weights": {
+    "base": {
+      "path": "runs/mitos14-h10-train/x4/rpmin-train/best.pt",
+      "sha256": "8b2c3e7dcdaf533cd2cad567580c7f7d0a4cc5acbbb108b3b91f835241bbfa0f"
+    },
+    "detail": {
+      "path": "runs/mitos14-rpmin-opt/x4/detail/best.pt",
+      "sha256": "ad880f1ce9023d1609f05b90dbaf2c969406085b47d4498966d1460d5b45ced8"
+    },
+    "width48": {
+      "path": "runs/mitos14-rpmin-opt/x4/width48/best.pt",
+      "sha256": "85b56babfe68036924b08afbe67cf6e8221a167be8abb1888eeed28dc7f222dd"
+    }
+  },
+  "correction_sha256": "091b749196a08de0543c9c7f0a787a7b9dd0c0cfc3d5d83c583c01d613ca0938",
+  "manifest_sha256": "ffc92e1691e0608e6e7d243a3a4e6ebedabed5bff802ff4fcc4dbfa38e39fb74",
+  "seed": 101
+}

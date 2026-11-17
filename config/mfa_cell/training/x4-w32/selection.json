@@ -1,0 +1,6 @@
+{
+  "best_epoch": 144,
+  "val_psnr": 27.13632827334934,
+  "initial_val_psnr": 24.31280337439643,
+  "gain_vs_initial_db": 2.8235248989529076
+}

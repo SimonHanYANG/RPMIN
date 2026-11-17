@@ -1,0 +1,6 @@
+# Preserve the published SHA-256 values and verification records across checkouts.
+weights/** -text whitespace=cr-at-eol
+config/**/verification/** -text
+config/**/verification/**/*.csv whitespace=cr-at-eol
+config/mfa_cell/training/**/*.csv -text whitespace=cr-at-eol
+*.sh text eol=lf

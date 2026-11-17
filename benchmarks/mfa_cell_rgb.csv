@@ -1,0 +1,5 @@
+method,x2_psnr_db,x2_ssim,x4_psnr_db,x4_ssim,x2_protocol,x4_protocol
+RP-MIN,31.43036142778603,0.8764173518785667,27.679713120249488,0.6871003616343826,"Width 32, patch input, D4, three seeds","Width 32+48, whole-field input, D4, three seeds"
+NeXtSRGAN,28.457843588544176,0.8383687140492649,25.66854915371189,0.6364684613881173,Scale-adapted RRDB initialization and PSNR/GAN interpolation,RRDB initialization and PSNR/GAN interpolation
+AESOP (RRDB128),30.76138597959048,0.8615004335130964,27.133795793954427,0.6602629572153091,"Official checkpoint, scale adaptation and 204 L1 updates",Official checkpoint and 204 L1 updates
+SeD (RRDB P+SeD),30.7543150790326,0.8602744290580997,27.160311822767383,0.6641268592763256,"Official checkpoint, scale adaptation and 204 L1 updates",Official checkpoint and 204 L1 updates

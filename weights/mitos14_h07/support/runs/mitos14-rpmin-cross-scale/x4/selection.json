@@ -1,0 +1,81 @@
+{
+  "baseline": {
+    "strength": 0.0,
+    "centered": false,
+    "pairs": 132,
+    "psnr": 26.12422054464167,
+    "ssim": 0.7258771576664664
+  },
+  "selected": {
+    "strength": 0.5,
+    "centered": true,
+    "pairs": 132,
+    "psnr": 26.14803578636863,
+    "ssim": 0.7261189231366822
+  },
+  "candidates": [
+    {
+      "strength": 0.0,
+      "centered": false,
+      "pairs": 132,
+      "psnr": 26.12422054464167,
+      "ssim": 0.7258771576664664
+    },
+    {
+      "strength": 0.25,
+      "centered": false,
+      "pairs": 132,
+      "psnr": 26.143926114747018,
+      "ssim": 0.7262354705369833
+    },
+    {
+      "strength": 0.5,
+      "centered": false,
+      "pairs": 132,
+      "psnr": 26.146608757250238,
+      "ssim": 0.72611816137126
+    },
+    {
+      "strength": 0.75,
+      "centered": false,
+      "pairs": 132,
+      "psnr": 26.13226507649277,
+      "ssim": 0.7255200224392342
+    },
+    {
+      "strength": 1.0,
+      "centered": false,
+      "pairs": 132,
+      "psnr": 26.10115607579549,
+      "ssim": 0.724439642646096
+    },
+    {
+      "strength": 0.25,
+      "centered": true,
+      "pairs": 132,
+      "psnr": 26.144248066526472,
+      "ssim": 0.7262355748451117
+    },
+    {
+      "strength": 0.5,
+      "centered": true,
+      "pairs": 132,
+      "psnr": 26.14803578636863,
+      "ssim": 0.7261189231366822
+    },
+    {
+      "strength": 0.75,
+      "centered": true,
+      "pairs": 132,
+      "psnr": 26.13556569995302,
+      "ssim": 0.7255220909913381
+    },
+    {
+      "strength": 1.0,
+      "centered": true,
+      "pairs": 132,
+      "psnr": 26.107067397146515,
+      "ssim": 0.7244438298723914
+    }
+  ]
+}

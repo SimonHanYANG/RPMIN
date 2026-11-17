@@ -1,0 +1,54 @@
+{
+  "context": "whole",
+  "runs": [
+    {
+      "seed": 101,
+      "patches": 308,
+      "psnr": 27.68314656213465,
+      "ssim": 0.6872527347635198
+    },
+    {
+      "seed": 102,
+      "patches": 308,
+      "psnr": 27.68265244989438,
+      "ssim": 0.6872268767774686
+    },
+    {
+      "seed": 103,
+      "patches": 308,
+      "psnr": 27.673340348719442,
+      "ssim": 0.6868214733621593
+    }
+  ],
+  "psnr": {
+    "mean": 27.679713120249488,
+    "std": 0.005524508978827081
+  },
+  "ssim": {
+    "mean": 0.6871003616343826,
+    "std": 0.00024187013074876857
+  },
+  "grid": {
+    "patch": 128,
+    "stride_x": 32,
+    "stride_y": 25,
+    "origin": 1
+  },
+  "self_ensemble": "d4",
+  "manifest_sha256": "482bafedf43ea1d3cab4157c090fc8ae1279cb25db92d649cfa08b491d2e47da",
+  "checkpoints": {
+    "x4-w32": {
+      "file": "/root/autodl-tmp/rpmin-project/RP-MIN-fresh/weights/mfa_cell/RP-MIN_MFA-Cell_x4_ensemble_W32.pt",
+      "sha256": "71d4d5e1263446b2c614ef7e047c5a3a1de328324a4827f5c3793dacd69a554b"
+    },
+    "x4-w48": {
+      "file": "/root/autodl-tmp/rpmin-project/RP-MIN-fresh/weights/mfa_cell/RP-MIN_MFA-Cell_x4_ensemble_W48.pt",
+      "sha256": "409d85d787d43db997df272f0e5e670d4077e5d0fcb5ddd2a725fe4274371971"
+    }
+  },
+  "expected": {
+    "psnr": 27.679713120249488,
+    "ssim": 0.6871003616343826
+  },
+  "within_archive_tolerance": true
+}

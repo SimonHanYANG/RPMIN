@@ -1,0 +1,36 @@
+{
+  "rpmin_commit": "e79d2b3ce3ba85f8b8b0e47b6b9c867567bafc1b",
+  "server_workdir": "/root/autodl-tmp/sr-baselines",
+  "python": "torch-env/bin/python",
+  "archive": "weights/mitos14_h07",
+  "h10_run": "runs/mitos14-h10-train",
+  "prior_run": "runs/mitos14-rpmin-consistency",
+  "mixed_run": "runs/mitos14-rpmin-h07",
+  "readapt_run": "runs/mitos14-rpmin-h07-readapt",
+  "lightglue_cache": "/root/autodl-tmp/rpmin-project/RP-MIN/.torchhub",
+  "split": {
+    "mixed_train": ["H10_01", "H10_02", "H10_03", "H07_00", "H07_01"],
+    "readapt_train": ["H10_01", "H10_02", "H10_03"],
+    "val": "H10_04",
+    "test": "H10_00"
+  },
+  "train": {
+    "context_lr": 16,
+    "mixed_steps": 3600,
+    "mixed_lr": 0.00006,
+    "readapt_steps": 1000,
+    "readapt_lr": 0.00003
+  },
+  "test": {
+    "metric": "BT.601 Y",
+    "psnr_peak": 255,
+    "border_hr": 0,
+    "patch_input": {"patch": 128, "stride_x": 128, "stride_y": 128, "origin": 1, "batch": 4, "fields": 1},
+    "patches": 132,
+    "tolerance": {"psnr": 0.0001, "ssim": 0.00001},
+    "scales": {
+      "2": {"psnr": 28.27777273004705, "ssim": 0.887403326052608, "bands": [0.0, 0.0, 0.25], "weight": "RP-MIN_MITOS14_x2_Y-PSNR28.2778_SSIM0.8874.pt"},
+      "4": {"psnr": 27.2877716440143, "ssim": 0.7883445150924452, "bands": [0.0, 0.0, 0.5], "weight": "RP-MIN_MITOS14_x4_Y-PSNR27.2878_SSIM0.7883.pt"}
+    }
+  }
+}
