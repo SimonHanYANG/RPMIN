@@ -10,3 +10,6 @@ SuperResolutionDataset/
 *.ckpt
 *.safetensors
 /weights/
+*.log
+*.log.*
+/logs/

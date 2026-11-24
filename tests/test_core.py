@@ -30,11 +30,9 @@ class CoreTests(unittest.TestCase):
         offsets = torch.tensor([[[0.5, 0], [-0.5, 0]]])
         views = build_views(image, offsets)
         torch.testing.assert_close(views[:, 0], image)
-        for mode in ("difference", "sobel", "scharr"):
-            views = build_views(image, offsets, mode)
-            inner = views[0, 1:, 0, 2:-2, 2:-2]
-            expected = torch.tensor([0.5, -0.5])[:, None, None].expand_as(inner)
-            torch.testing.assert_close(inner, expected)
+        inner = views[0, 1:, 0, 2:-2, 2:-2]
+        expected = torch.tensor([0.5, -0.5])[:, None, None].expand_as(inner)
+        torch.testing.assert_close(inner, expected)
 
     def test_registration_transform_lifts_pixel_centers(self):
         matrix = np.array([[1.02, 0.01, 0.8], [-0.02, 0.99, -1.2], [0.0001, 0, 1]])
@@ -63,22 +61,16 @@ class CoreTests(unittest.TestCase):
         torch.testing.assert_close(residual, torch.zeros_like(residual))
 
     def test_compass_isotropic_and_repeatable(self):
-        xy = displacements(1, 8, "difference", 0.5)[0]
+        xy = displacements(1, 0.5)[0]
         torch.testing.assert_close(xy.T @ xy, torch.eye(2))
         x, y = xy.T
         design = torch.stack((x, y, x.square() / 2, x * y, y.square() / 2), dim=1)
         self.assertEqual(torch.linalg.matrix_rank(design).item(), 5)
-        for mode in ("difference", "random-direction"):
-            a, b = (displacements(2, 8, mode, None, torch.Generator().manual_seed(12)) for _ in range(2))
-            torch.testing.assert_close(a, b)
-        compass_rng, random_rng = (torch.Generator().manual_seed(15) for _ in range(2))
-        for batch in (2, 3, 1):
-            compass = displacements(batch, 8, "difference", None, compass_rng)
-            random = displacements(batch, 8, "random-direction", None, random_rng)
-            torch.testing.assert_close(compass.norm(dim=-1), random.norm(dim=-1))
+        a, b = (displacements(2, None, torch.Generator().manual_seed(12)) for _ in range(2))
+        torch.testing.assert_close(a, b)
 
     def test_deformable_conv_at_zero_offsets_matches_conv(self):
-        block = AdaptiveConv(2, 3, True)
+        block = AdaptiveConv(2, 3)
         image = torch.randn(2, 2, 7, 9)
         actual = block(image)
         expected = F.conv2d(image, block.conv.weight, block.conv.bias, padding=1)
@@ -86,7 +78,7 @@ class CoreTests(unittest.TestCase):
 
     def test_rpum_starts_at_half_pixel_bilinear_coordinates(self):
         for scale in (2, 4):
-            block = RPUM(3, scale, True)
+            block = RPUM(3, scale)
             with torch.no_grad():
                 block.to_rgb.weight.zero_()
                 block.to_rgb.weight[:, :, 1, 1].copy_(torch.eye(3))
@@ -97,8 +89,8 @@ class CoreTests(unittest.TestCase):
 
     def test_initial_residual_leaves_bicubic_unchanged(self):
         image = torch.rand(2, 3, 7, 9)
-        for scale, rpum in ((2, True), (4, True), (4, False)):
-            model = RPMIN(ModelConfig(scale=scale, width=4, rpum=rpum))
+        for scale in (2, 4):
+            model = RPMIN(ModelConfig(scale=scale, width=4))
             base = F.interpolate(image, scale_factor=scale, mode="bicubic", align_corners=False)
             torch.testing.assert_close(model(image), base, rtol=0, atol=0)
 
@@ -159,13 +151,11 @@ class CoreTests(unittest.TestCase):
 
     def test_model_forward_and_gradients(self):
         image = torch.rand(1, 3, 7, 9)
-        for scale, directions, enabled in ((2, 8, True), (4, 0, True), (4, 8, False)):
-            model = RPMIN(ModelConfig(scale=scale, width=4, directions=directions, amfm=enabled, rpum=enabled))
+        for scale in (2, 4):
+            model = RPMIN(ModelConfig(scale=scale, width=4))
             result, maps = model(image, return_maps=True)
             self.assertEqual(result.shape, (1, 3, 7 * scale, 9 * scale))
-            self.assertEqual(set(maps), {"sce", "sda"} if enabled else set())
-            if directions == 0:
-                self.assertTrue(torch.count_nonzero(maps["sda"]).item() == 0)
+            self.assertEqual(set(maps), {"sce", "sda"})
             loss = ReconstructionLoss()(result, torch.rand_like(result))
             loss.backward()
             for parameter in model.parameters():

@@ -12,7 +12,6 @@ from time import perf_counter
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
-from torch.nn import functional as F
 
 from .data import PairedGrid, PairedImages, manifest_summary, read_manifest, save_rgb
 from .model import ModelConfig, RPMIN
@@ -134,20 +133,16 @@ def predict(model, image, generator, self_ensemble=False):
 
 
 @torch.inference_mode()
-def evaluate(data, model, *, device, scale, seed, border, images=None, maps_out=None, calibration=None,
-             self_ensemble=False):
-    if model is not None:
-        model.eval()
+def evaluate(data, model, *, device, seed, border, images=None, maps_out=None, calibration=None,
+             self_ensemble=False, save_prediction=None):
+    model.eval()
     generator = torch.Generator().manual_seed(seed)
     rows = []
     for lr, hr, identifiers in data:
         lr, hr = lr.to(device), hr.to(device)
         if calibration is not None:
             lr = calibration.align(lr)
-        if model is None:
-            sr = F.interpolate(lr, scale_factor=scale, mode="bicubic", align_corners=False)
-            maps = {}
-        elif maps_out is None:
+        if maps_out is None:
             sr = predict(model, lr, generator, self_ensemble)
             maps = {}
         else:
@@ -159,6 +154,8 @@ def evaluate(data, model, *, device, scale, seed, border, images=None, maps_out=
             rows.append({"id": identifier, "seed": seed, "psnr": p, "ssim": s})
             if images is not None:
                 save_rgb(sr[index], images / f"{identifier}.png")
+            if save_prediction is not None:
+                save_prediction(identifier, lr[index], sr[index], hr[index])
             for name, weights in maps.items():
                 # Preserve numeric weights as well as viewable grayscale maps.
                 values = weights[index].detach().cpu().numpy()
@@ -192,17 +189,15 @@ def evaluate_manifest(
     data = loader(dataset, device, workers, batch=batch)
     if len(set(seeds)) != len(seeds):
         raise ValueError("Evaluation seeds must be distinct.")
-    if maps and (model is None or not model.config.amfm):
-        raise ValueError("Attention export requires an AMFM checkpoint.")
-    if self_ensemble and (model is None or maps):
-        raise ValueError("Self-ensemble requires a model and cannot export individual attention maps.")
+    if self_ensemble and maps:
+        raise ValueError("Self-ensemble cannot export individual attention maps.")
     out = Path(out)
     all_rows = []
     runs = []
     for seed in seeds:
         target = out / f"seed_{seed}"
         rows = evaluate(
-            data, model, device=device, scale=scale, seed=seed, border=border,
+            data, model, device=device, seed=seed, border=border,
             images=target / "sr" if images else None, maps_out=target / "attention" if maps else None,
             calibration=calibration, self_ensemble=self_ensemble,
         )
@@ -210,10 +205,10 @@ def evaluate_manifest(
         runs.append({"seed": seed, **summarize(rows)})
     summary = {
         "manifest_sha256": manifest_digest(manifest), "split": split, "scale": scale, "border_hr": border,
-        "model": asdict(model.config) if model is not None else "bicubic",
+        "model": asdict(model.config),
         "runs": runs,
     }
-    if model is not None and model.checkpoint_epoch is not None:
+    if model.checkpoint_epoch is not None:
         summary["checkpoint_epoch"] = model.checkpoint_epoch
     if self_ensemble:
         summary["self_ensemble"] = "d4"
@@ -256,7 +251,7 @@ def train(manifest, out, model_config, config, device, workers=0, resume=False, 
     criterion = ReconstructionLoss(
         config.pixel_weight, config.frequency_weight, config.phase, config.mse_weight, config.ssim_weight,
     )
-    validation_options = {"device": device, "scale": model_config.scale, "seed": config.val_seed,
+    validation_options = {"device": device, "seed": config.val_seed,
                           "border": config.border}
     history = []
     best_psnr, best_epoch = -math.inf, 0

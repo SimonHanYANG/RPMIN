@@ -12,19 +12,14 @@ RP-MIN reconstructs a higher-resolution bright-field microscopy image from a sin
 
 *Figure 2. Updated RP-MIN architecture. LightGlue is used in offline pair preparation. Inference takes a single LR image.*
 
-## Quantitative results
+## MFA-Cell manuscript results
 
-**Table 2.** Performance on Mitos-Atypia-14 and MFA-Cell, as reported in the submitted manuscript. Each entry gives PSNR (dB) / SSIM. Higher is better for both metrics.
+Table 2 of the submitted manuscript reports the following RP-MIN PSNR (dB) / SSIM values.
 
-| Method | Architecture | Mitos-Atypia-14, ×2 (10× → 20×) | MFA-Cell, ×2 (10× → 20×) | Mitos-Atypia-14, ×4 (10× → 40×) | MFA-Cell, ×4 (10× → 40×) |
-| --- | --- | ---: | ---: | ---: | ---: |
-| PathSRGAN | GAN | 21.23 / 0.70 | 24.67 / 0.63 | 18.80 / 0.50 | 23.57 / 0.51 |
-| SwinIR | Transformer | 26.57 / 0.84 | 25.36 / 0.63 | 24.96 / 0.71 | 25.13 / 0.59 |
-| RepRFN | CNN | 26.84 / 0.84 | 25.90 / 0.64 | 25.09 / 0.72 | 25.42 / 0.60 |
-| Bicubic | Computation | 19.33 / 0.45 | 23.30 / 0.61 | 17.79 / 0.33 | 23.21 / 0.51 |
-| SeemoRe | CNN | 26.16 / 0.87 | 28.30 / 0.85 | 26.03 / 0.76 | 27.07 / 0.66 |
-| SR3 | Diffusion | 21.63 / 0.52 | 22.97 / 0.59 | 20.16 / 0.45 | 20.81 / 0.34 |
-| **RP-MIN (ours)** | CNN | **28.58 / 0.89** | **31.24 / 0.86** | **27.73 / 0.80** | **27.68 / 0.67** |
+| Scale | PSNR / SSIM |
+| :---: | ---: |
+| ×2 | 31.24 / 0.86 |
+| ×4 | 27.68 / 0.67 |
 
 ## Qualitative examples
 
@@ -34,6 +29,26 @@ Each row shows the same field of view. All images use the same display scale so 
 | :---: | :---: | :---: | :---: |
 | ×2 | <img src="assets/mfa-cell-x2-lr.png" alt="MFA-Cell ×2 LR input region" width="64"><br><sub>128 × 128 px</sub> | <img src="assets/mfa-cell-x2.png" alt="RP-MIN ×2 reconstruction on MFA-Cell" width="128"><br><sub>256 × 256 px</sub> | <img src="assets/mfa-cell-x2-hr.png" alt="MFA-Cell ×2 registered ground-truth HR" width="128"><br><sub>256 × 256 px</sub> |
 | ×4 | <img src="assets/mfa-cell-x4-lr.png" alt="MFA-Cell ×4 LR input region" width="64"><br><sub>128 × 128 px</sub> | <img src="assets/mfa-cell-x4.png" alt="RP-MIN ×4 reconstruction on MFA-Cell" width="256"><br><sub>512 × 512 px</sub> | <img src="assets/mfa-cell-x4-hr.png" alt="MFA-Cell ×4 registered ground-truth HR" width="256"><br><sub>512 × 512 px</sub> |
+
+## Reproduce the MFA-Cell holdout test
+
+Place the archived `rpmin-mfa-cell-x2-w32.pth` and `rpmin-mfa-cell-x4-w32.pth` files in `weights/mfa_cell/`. The test checks the checkpoint hashes and aligned reference pixels against [mfa_cell_test.json](scripts/mfa_cell_test.json).
+
+With prepared references laid out as `x2/test/aligned.csv` and `x4/test/aligned.csv` beneath `runs/mfa_cell/references/`, run:
+
+```bash
+python scripts/test_mfa_cell.py --device cuda:0
+```
+
+To regenerate the aligned references, pass the root of the original dataset:
+
+```bash
+python scripts/test_mfa_cell.py --dataset /path/to/SuperResolutionDataset --device cuda:0
+```
+
+The verified environment used Python 3.12, PyTorch 2.8.0 and torchvision 0.23.0 with CUDA 12.8. Reference regeneration uses OpenCV 4.13.0 and the recorded registration transforms.
+
+The two scales share four held-out fields and 308 RGB scoring windows per seed. The ×2 checkpoint uses patch-wise D4 self-ensemble. The ×4 checkpoint uses whole-field D4 self-ensemble, followed by window scoring. Both use seeds 101–105. The test writes one LR/SR/HR crop triplet per field at seed 101 and four full-field ×4 predictions under `runs/mfa_cell/predictions/`. The PNGs are for visual inspection. The evaluator computes PSNR and SSIM from floating-point predictions. Use `--metrics-out runs/mfa_cell/metrics` to save the computed metrics locally.
 
 ## Run the code
 
